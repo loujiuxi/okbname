@@ -504,6 +504,30 @@
             z-index: 0;
         }
     </style>
+
+	<!-- 底部链接 CSS 样式（可放在 <style> 标签或外部 CSS 文件中） --> 
+<style> 
+  .social-icon-link { 
+    display: inline-block; /* 确保可点击区域包裹图标 */ 
+    color: #1DA1F2; /* 初始颜色 */ 
+    font-size: 20px; /* 图标大小 */ 
+    transition: color 0.3s; /* 颜色过渡动画 */ 
+  } 
+  .social-icon-link:hover { 
+    color: #0a66c2; /* 悬停时颜色变化 */ 
+  } 
+
+	.cta-button { 
+  /* 确保按钮样式不受 <a> 标签影响 */ 
+  text-decoration: none; /* 移除下划线（若继承） */ 
+  color: inherit; /* 继承父元素颜色 */ 
+} 
+a { 
+  text-decoration: none; /* 直接清除 <a> 标签的下划线 */ 
+} 
+	
+</style> 
+	
 </head>
 <body>
     <header>
@@ -618,7 +642,7 @@
                         <li>完全所有权</li>
                         <li>优先支持</li>
                     </ul>
-                    <button class="cta-button">X</button>
+                    <button class="cta-button" onclick="window.open('https://x.com/CaifuEth', '_blank')">X</button>
                 </div>
                 <div class="pricing-card" style="transform: scale(1.05); background: rgba(0, 209, 255, 0.1);">
                     <h3>3D</h3>
@@ -628,7 +652,7 @@
                         <li>完全所有权</li>
                         <li>优先支持</li>
                     </ul>
-                    <button class="cta-button" style="background: linear-gradient(45deg, var(--highlight), #00a2ff);">X</button>
+                    <button class="cta-button"  onclick="window.open('https://x.com/CaifuEth', '_blank')" style="background: linear-gradient(45deg, var(--highlight), #00a2ff);">X</button>
                 </div>
                 <div class="pricing-card">
                     <h3>单词</h3>
@@ -638,7 +662,7 @@
                         <li>完全所有权</li>
                         <li>优先支持</li>
                     </ul>
-                    <button class="cta-button">X</button>
+                    <button class="cta-button"  onclick="window.open('https://x.com/CaifuEth', '_blank')">X</button>
                 </div>
             </div>
         </div>
@@ -707,10 +731,18 @@
                 <span class="footer-link">联系我们</span>
             </div>
             <div class="footer-social">
+				<a href="https://x.com/okbdomainname"  target="_blank" class="social-icon-link"> 
                 <i class="fab fa-twitter social-icon"></i>
+				</a>
+				<a href="https://t.me/OKBdomainGroup"  target="_blank" class="social-icon-link"> 
                 <i class="fab fa-telegram social-icon"></i>
+				</a>
+				<a href="https://twitter.com/example"  target="_blank" class="social-icon-link"> 
                 <i class="fab fa-github social-icon"></i>
+				</a>
+				<a href="https://twitter.com/example"  target="_blank" class="social-icon-link"> 
                 <i class="fab fa-discord social-icon"></i>
+				</a>
             </div>
             <div class="disclaimer">以上内容仅供参考</div>
         </div>
@@ -748,3 +780,4 @@
     </script>
 </body>
 </html>
+
