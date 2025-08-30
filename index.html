@@ -1,484 +1,750 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethscriptions 铭文 .eth 域名 | 去中心化数字身份</title>
-    <link rel="stylesheet" href="https://s2.ssl.qhres2.com/static/56662140ef7d5d03.css">
-    <link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-100-M/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://s2.ssl.qhres2.com/!2dd0bbf7/echats.js"></script>
+    <title>.OKB Name | XLayer链首个去中心化DID</title>
+    <link href="https://s2.ssl.qhres2.com/static/56662140ef7d5d03.css"  rel="stylesheet">
+    <link href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-100-M/font-awesome/6.0.0/css/all.min.css"  rel="stylesheet">
     <style>
         :root {
-            --primary-dark: #1a237e;
-            --primary-light: #3949ab;
-            --accent: #ff6d00;
-            --accent-light: #ff9100;
-            --gray-100: #f5f5f5;
-            --gray-200: #eeeeee;
-            --gray-500: #9e9e9e;
-            --gray-700: #616161;
-            --gray-900: #212121;
-            --white: #ffffff;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
-            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
+            --primary: #1A1A2E;
+            --secondary: #16213E;
+            --accent: #0F52BA;
+            --light: #E6E6E6;
+            --highlight: #00D1FF;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-
+        
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--primary);
+            color: var(--light);
             line-height: 1.6;
-            color: var(--gray-900);
-            background-color: var(--white);
             margin: 0;
             padding: 0;
             overflow-x: hidden;
         }
-
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 20px;
         }
-
+        
         header {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
-            color: var(--white);
-            padding: 3rem 0;
-            text-align: center;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            padding: 2rem 0;
             position: relative;
             overflow: hidden;
         }
-
-        header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
-            opacity: 0.2;
-            pointer-events: none;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            letter-spacing: -0.05em;
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             position: relative;
-            z-index: 1;
+            z-index: 2;
         }
-
-        .subtitle {
-            font-size: 1.5rem;
-            font-weight: 300;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 0.75rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-            box-shadow: var(--shadow-md);
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-button:hover {
-            background-color: var(--accent-light);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        section {
-            padding: 4rem 0;
-            position: relative;
-        }
-
-        .section-title {
+        
+        .logo {
             font-size: 2rem;
-            color: var(--primary-dark);
-            margin-bottom: 2rem;
-            text-align: center;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .section-title::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-
-        .card {
-            background-color: var(--white);
-            border-radius: 8px;
-            box-shadow: var(--shadow-sm);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-5px);
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
+            font-weight: 700;
+            color: var(--highlight);
             display: flex;
             align-items: center;
         }
-
-        .card-title i {
-            margin-right: 0.75rem;
-            color: var(--accent);
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2.5rem;
         }
-
-        .grid {
+        
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at 20% 50%, rgba(16, 20, 36, 0.8) 0%, var(--primary) 70%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            background: linear-gradient(to right, var(--highlight), #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--accent), var(--highlight));
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 10px 20px rgba(0, 209, 255, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 209, 255, 0.3);
+        }
+        
+        .feature-section {
+            padding: 5rem 0;
+            background-color: var(--secondary);
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+            left: 36%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), var(--highlight));
+        }
+        
+        .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-
-        .feature-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
             padding: 2rem;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
         .feature-icon {
             font-size: 2.5rem;
-            color: var(--accent);
+            color: var(--highlight);
             margin-bottom: 1rem;
         }
-
+        
         .feature-title {
-            font-size: 1.25rem;
-            color: var(--primary-dark);
-            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
             font-weight: 600;
         }
+            .comparison {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 50px;
+        }
+		     .comparison-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: var(--text-light);
+            text-align: center;
+        }
+		     .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+		    .comparison-item {
+            background: rgba(30, 64, 175, 0.1);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+        }
+		     .animate-fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
 
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+		    .coin-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+		    .coin-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+        .comparison-section {
+            padding: 5rem 0;
+            background-color: var(--primary);
+        }
+        
         .comparison-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 2rem 0;
-            box-shadow: var(--shadow-sm);
+            margin-top: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
         }
-
-        .comparison-table th,
-        .comparison-table td {
-            padding: 1rem;
+        
+        .comparison-table th, .comparison-table td {
+            padding: 1.5rem;
             text-align: left;
-            border-bottom: 1px solid var(--gray-200);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-
+        
         .comparison-table th {
-            background-color: var(--primary-dark);
-            color: var(--white);
+            background: rgba(0, 209, 255, 0.1);
             font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
         }
-
-        .comparison-table tr:nth-child(even) {
-            background-color: var(--gray-100);
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
         }
-
-        .comparison-table .highlight {
-            background-color: rgba(255, 109, 0, 0.1);
-            font-weight: 600;
+        
+        .okb-highlight {
+            background: rgba(0, 209, 255, 0.1);
+            position: relative;
         }
-
-        .tech-diagram {
-            width: 100%;
-            max-width: 800px;
-            margin: 2rem auto;
-            height: 400px;
-            background-color: var(--gray-100);
-            border-radius: 8px;
+        
+        .okb-highlight::before {
+            content: '★';
+            position: absolute;
+            left: -20px;
+            color: var(--highlight);
+        }
+        
+        .pricing-section {
+            padding: 5rem 0;
+            background: linear-gradient(to bottom, var(--secondary), var(--primary));
+        }
+        
+        .pricing-cards {
             display: flex;
             justify-content: center;
-            align-items: center;
-            color: var(--gray-500);
-            font-size: 1.25rem;
-            box-shadow: var(--shadow-sm);
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
         }
-
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            width: 300px;
+            text-align: center;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(0, 209, 255, 0.2);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 1rem 0;
+            color: var(--highlight);
+        }
+        
+        .price-period {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--highlight);
+        }
+        
+        .faq-section {
+            padding: 5rem 0;
+            background-color: var(--secondary);
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .faq-item.active  .faq-answer {
+            max-height: 500px;
+            padding-bottom: 1.5rem;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active  .faq-toggle {
+            transform: rotate(180deg);
+        }
+        
         footer {
-            background-color: var(--gray-900);
-            color: var(--gray-200);
+            background-color: var(--primary);
             padding: 3rem 0;
             text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 1rem;
+        }
+        
+        .footer-text {
+            opacity: 0.7;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
         .footer-links {
             display: flex;
             justify-content: center;
             gap: 2rem;
             margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
-
+        
         .footer-link {
-            color: var(--gray-200);
-            text-decoration: none;
+            color: var(--light);
             transition: var(--transition);
+            opacity: 0.7;
         }
-
+        
         .footer-link:hover {
-            color: var(--accent);
+            opacity: 1;
+            color: var(--highlight);
         }
-
-        .copyright {
-            font-size: 0.875rem;
-            color: var(--gray-500);
+        
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
-
-        .ai-disclaimer {
-            font-size: 16pt;
-            color: var(--gray-500);
-            text-align: center;
-            padding: 2rem 0;
-            background-color: var(--gray-100);
+        
+        .social-icon {
+            font-size: 1.5rem;
+            color: var(--light);
+            transition: var(--transition);
+            opacity: 0.7;
         }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+        
+        .social-icon:hover {
+            color: var(--highlight);
+            opacity: 1;
+            transform: translateY(-3px);
         }
-
-        .fade-in {
-            animation: fadeIn 1s ease forwards;
+        
+        .disclaimer {
+            font-size: 10pt;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        .floating {
-            animation: float 3s ease-in-out infinite;
-        }
-
+        
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.25rem;
+                font-size: 2.5rem;
             }
-
+            
             .subtitle {
-                font-size: 1.25rem;
+                font-size: 1.2rem;
             }
-
-            .grid {
+            
+            .features-grid {
                 grid-template-columns: 1fr;
             }
-
-            .section-title {
-                font-size: 1.75rem;
+            
+            .pricing-cards {
+                flex-direction: column;
+                align-items: center;
             }
+        }
+        
+        /* Animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Hand-drawn elements */
+        .hand-drawn {
+            position: absolute;
+            opacity: 0.05;
+            z-index: 1;
+        }
+        
+        .hd-1 {
+            top: 10%;
+            left: 5%;
+            font-size: 10rem;
+            transform: rotate(-15deg);
+        }
+        
+        .hd-2 {
+            bottom: 10%;
+            right: 5%;
+            font-size: 8rem;
+            transform: rotate(10deg);
+        }
+        
+        /* Glow effects */
+        .glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 209, 255, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
         }
     </style>
 </head>
-
 <body>
     <header>
+        <div class="glow"></div>
         <div class="container">
-            <h1 class="fade-in">Ethscriptions 铭文 .eth 域名</h1>
-            <p class="subtitle fade-in">下一代去中心化数字身份解决方案，永久、安全、无需续费</p> <a href="#learn-more" class="cta-button floating">了解更多</a>
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-globe"></i>
+                    .OKB 
+                </div>
+                <button class="cta-button">立即注册</button>
+            </div>
         </div>
+        <div class="hand-drawn hd-1">OKB</div>
+        <div class="hand-drawn hd-2">XLayer</div>
     </header>
-    <section id="definition">
+    
+    <section class="hero">
+        <div class="glow"></div>
         <div class="container">
-            <h2 class="section-title">定义与特点</h2>
-            <div class="grid">
-                <div class="card fade-in">
-                    <h3 class="card-title"><i class="fas fa-fingerprint"></i> 什么是 Ethscriptions 铭文 .eth 域名?</h3>
-                    <p>Ethscriptions 铭文 .eth 域名是基于以太坊区块链技术的全新数字身份解决方案，通过铭文技术将域名信息永久记录在区块链上，实现完全去中心化的域名所有权和管理。</p>
-                    <p>与传统 ENS 域名不同，Ethscriptions 铭文 .eth 域名不需要每年续费，一经注册即永久有效，彻底解决了域名过期丢失的风险。</p>
+            <div class="hero-content">
+                <h1>开启去中心化身份的新时代</h1>
+                <p class="subtitle">.OKB 是 XLayer 链首个DID后缀，为您提供完全去中心化的数字身份解决方案</p>
+                <button class="cta-button">获取您的.OKB Name</button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="feature-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">为何选择.OKB Name</h2>
+            <div class="features-grid">
+                <div class="feature-card floating">
+                    <div class="feature-icon">
+                        <i class="fas fa-unlock-alt"></i>
+                    </div>
+                    <h3 class="feature-title">完全去中心化</h3>
+                    <p>没有中心化控制，没有项目方干预，真正的Web3.0体验，您的.OKB Name完全由您掌控。</p>
                 </div>
-                <div class="card fade-in">
-                    <h3 class="card-title"><i class="fas fa-star"></i> 核心特点</h3>
-                    <ul>
-                        <li><strong>永久性</strong> - 一次注册，永久拥有</li>
-                        <li><strong>去中心化</strong> - 不受任何中心化机构控制</li>
-                        <li><strong>低成本</strong> - 无需每年续费</li>
-                        <li><strong>安全性</strong> - 基于以太坊区块链的强大安全保障</li>
-                        <li><strong>互操作性</strong> - 兼容现有以太坊生态系统</li>
+                <div class="feature-card floating" style="animation-delay: 0.5s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <h3 class="feature-title">超低Gas费用</h3>
+                    <p>注册费用低至0.01USDT，远低于其他区块链DID的注册成本，让更多人能够轻松拥有。</p>
+                </div>
+                <div class="feature-card floating" style="animation-delay: 1s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3 class="feature-title">永久所有权</h3>
+                    <p>一次注册，永久拥有，无需续费，您的.OKB Name将永远属于您。</p>
+                </div>
+                <div class="feature-card floating" style="animation-delay: 1.5s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3 class="feature-title">链上跨币转账</h3>
+                    <p>支持多种加密货币的链上直接转账，简化您的加密交易流程。</p>
+                </div>
+                <div class="feature-card floating" style="animation-delay: 2s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="feature-title">XLayer生态Gas</h3>
+                    <p>作为OKEX交易所平台币和XLayer链生态Gas币，.OKB Name深度整合生态优势。</p>
+                </div>
+                <div class="feature-card floating" style="animation-delay: 2.5s;">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">安全可靠</h3>
+                    <p>基于区块链技术，提供不可篡改的记录和所有权证明，保障您的数字资产安全。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section">
+        <div class="container">
+            <div class="comparison">
+                <h3 class="section-title">与主流数字货币对比</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-item animate-fade-in">
+                        <div class="coin-icon"> <i class="fab fa-bitcoin"></i> </div>
+                        <h4 class="coin-name">比特币 (BTC)</h4>
+                        <p class="coin-desc">数字黄金，价值存储首选，但交易速度慢，手续费高，不支持智能合约。</p>
+                    </div>
+                    <div class="comparison-item animate-fade-in delay-1">
+                        <div class="coin-icon"> <i class="fab fa-ethereum"></i> </div>
+                        <h4 class="coin-name">以太坊 (ETH)</h4>
+                        <p class="coin-desc">智能合约平台，生态丰富，但Gas费波动大</p>
+                    </div>
+                    <div class="comparison-item okb animate-fade-in delay-2">
+                        <div class="coin-icon"> <i class="fas fa-link"></i> </div>
+                        <h4 class="coin-name">OKB (.OKB域名)</h4>
+                        <p class="coin-desc">XLayer链原生Gas币，支持.OKB域名服务，交易快速，费用低廉，与OKEX生态深度整合。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">.OKB NAME 推荐</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>4D</h3>
+                    <div class="price">$议价 <span class="price-period">永久</span></div>
+                    <ul class="pricing-features">
+                        <li>稀有短域名</li>
+                        <li>完全所有权</li>
+                        <li>优先支持</li>
                     </ul>
+                    <button class="cta-button">X</button>
                 </div>
-            </div>
-        </div>
-    </section>
-    <section id="comparison" style="background-color: var(--gray-100);">
-        <div class="container">
-            <h2 class="section-title">与 ENS .eth 域名的对比</h2>
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>特性</th>
-                        <th>Ethscriptions 铭文 .eth</th>
-                        <th>传统 ENS .eth</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>所有权模式</td>
-                        <td class="highlight">完全去中心化，不可篡改</td>
-                        <td>由 ENS 组织部分控制</td>
-                    </tr>
-                    <tr>
-                        <td>续费机制</td>
-                        <td class="highlight">永久有效，无需续费</td>
-                        <td>每年需要续费</td>
-                    </tr>
-                    <tr>
-                        <td>注册成本</td>
-                        <td class="highlight">一次性支付，永久持有</td>
-                        <td>长期持有成本高</td>
-                    </tr>
-                    <tr>
-                        <td>抗审查性</td>
-                        <td class="highlight">完全抗审查</td>
-                        <td>理论上可被冻结</td>
-                    </tr>
-                    <tr>
-                        <td>技术基础</td>
-                        <td class="highlight">以太坊铭文技术</td>
-                        <td>ENS 智能合约</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </section>
-    <section id="technology">
-        <div class="container">
-            <h2 class="section-title">技术原理简介</h2>
-            <div class="grid">
-                <div class="card fade-in">
-                    <h3 class="card-title"><i class="fas fa-cogs"></i> 铭文技术</h3>
-                    <p>Ethscriptions 铭文技术利用以太坊交易的数据字段，将域名信息永久刻录在区块链上。这种技术不依赖智能合约，而是直接利用区块链不可篡改的特性存储数据。</p>
-                    <p>每个铭文包含域名的完整元数据，包括所有者地址、注册时间戳等信息。这些数据一经写入就无法修改或删除，确保了域名的永久性和安全性。</p>
-                </div>
-                <div class="card fade-in">
-                    <h3 class="card-title"><i class="fas fa-link"></i> 解析机制</h3>
-                    <p>Ethscriptions .eth 域名通过专门的解析器与以太坊地址绑定。这些解析器是轻量级的开源工具，任何人都可以运行，确保了系统的去中心化。</p>
-                    <p>与传统 ENS 不同，解析逻辑不是由中心化服务器决定，而是由开放的共识规则确定，任何人都可以验证域名的真实性和所有权。</p>
-                </div>
-            </div>
-            <div class="tech-diagram">
-                <div>Ethscriptions .eth 域名技术架构示意图</div>
-            </div>
-            <script>
-                // 初始化ECharts图表                document.addEventListener('DOMContentLoaded', function() {                    const diagram = document.querySelector('.tech-diagram');                    const chart = echarts.init(diagram);                                        const darkBlue = getComputedStyle(document.documentElement).getPropertyValue('--primary-dark').trim();                    const lightBlue = getComputedStyle(document.documentElement).getPropertyValue('--primary-light').trim();                    const orange = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();                                        const option = {                        backgroundColor: '#f5f5f5',                        series: [{                            type: 'graph',                            layout: 'none',                            symbolSize: 50,                            roam: true,                            label: {                                show: true,                                position: 'inside'                            },                            edgeSymbol: ['circle', 'arrow'],                            edgeSymbolSize: [4, 10],                            edgeLabel: {                                fontSize: 14                            },                            data: [{                                name: '用户',                                x: 100,                                y: 50,                                itemStyle: {                                    color: lightBlue                                }                            }, {                                name: '钱包',                                x: 300,                                y: 50,                                itemStyle: {                                    color: lightBlue                                }                            }, {                                name: '铭文',                                x: 200,                                y: 150,                                itemStyle: {                                    color: orange                                }                            }, {                                name: '区块链',                                x: 200,                                y: 250,                                itemStyle: {                                    color: darkBlue                                }                            }, {                                name: '解析器',                                x: 200,                                y: 350,                                itemStyle: {                                    color: orange                                }                            }],                            links: [{                                source: 0,                                target: 1,                                lineStyle: {                                    width: 2                                }                            }, {                                source: 1,                                target: 2,                                lineStyle: {                                    width: 2                                }                            }, {                                source: 2,                                target: 3,                                lineStyle: {                                    width: 2                                }                            }, {                                source: 3,                                target: 4,                                lineStyle: {                                    width: 2                                }                            }, {                                source: 4,                                target: 0,                                lineStyle: {                                    width: 2                                }                            }]                        }]                    };                                        chart.setOption(option);                                        window.addEventListener('resize', function() {                        chart.resize();                    });                });            
-            </script>
-        </div>
-    </section>
-    <section id="use-cases" style="background-color: var(--gray-100);">
-        <div class="container">
-            <h2 class="section-title">使用场景与优势</h2>
-            <div class="grid">
-                <div class="feature-box fade-in">
-                    <div class="feature-icon"><i class="fas fa-user-shield"></i></div>
-                    <h3 class="feature-title">去中心化身份</h3>
-                    <p>作为您在Web3世界的永久身份标识，无需担心域名过期或被回收。</p>
-                </div>
-                <div class="feature-box fade-in">
-                    <div class="feature-icon"><i class="fas fa-wallet"></i></div>
-                    <h3 class="feature-title">简化支付</h3>
-                    <p>替代复杂的钱包地址，让加密货币转账像发送电子邮件一样简单。</p>
-                </div>
-                <div class="feature-box fade-in">
-                    <div class="feature-icon"><i class="fas fa-globe"></i></div>
-                    <h3 class="feature-title">去中心化网站</h3>
-                    <p>绑定IPFS或Arweave存储的去中心化网站，打造抗审查的网络空间。</p>
-                </div>
-            </div>
-            <div class="grid" style="margin-top: 2rem;">
-                <div class="feature-box fade-in">
-                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-                    <h3 class="feature-title">数字资产保护</h3>
-                    <p>作为NFT、DAO成员资格等数字资产的验证标识，增强安全性。</p>
-                </div>
-                <div class="feature-box fade-in">
-                    <div class="feature-icon"><i class="fas fa-tags"></i></div>
-                    <h3 class="feature-title">品牌建设</h3>
-                    <p>企业和项目方可以建立永久性的品牌标识，无需担心域名管理问题。</p>
-                </div>
-                <div class="feature-box fade-in">
-                    <div class="feature-icon"><i class="fas fa-exchange-alt"></i></div>
-                    <h3 class="feature-title">跨链互操作</h3>
-                    <p>未来支持多链环境，成为跨链交互的统一身份标识。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section id="resources">
-        <div class="container">
-            <h2 class="section-title">相关资源</h2>
-            <div class="grid">
-                <div class="card fade-in">
-                    <h3 class="card-title"><i class="fas fa-book"></i> 学习资源</h3>
-                    <ul>
-                        <li><a href="https://ethscriptions.com" target="_blank" rel="noopener">Ethscriptions 官方网站</a></li>
-                        <li><a href="https://docs.ethscriptions.com" target="_blank" rel="noopener">技术文档</a></li>
-                        <li><a href="https://github.com/ethscriptions" target="_blank" rel="noopener">GitHub 仓库</a></li>
+                <div class="pricing-card" style="transform: scale(1.05); background: rgba(0, 209, 255, 0.1);">
+                    <h3>3D</h3>
+                    <div class="price">$议价 <span class="price-period">永久</span></div>
+                    <ul class="pricing-features">
+                        <li>优质域名</li>
+                        <li>完全所有权</li>
+                        <li>优先支持</li>
                     </ul>
+                    <button class="cta-button" style="background: linear-gradient(45deg, var(--highlight), #00a2ff);">X</button>
                 </div>
-                <div class="card fade-in">
-                    <h3 class="card-title"><i class="fas fa-tools"></i> 实用工具</h3>
-                    <ul>
-                        <li><a href="https://explorer.ethscriptions.com" target="_blank" rel="noopener">区块浏览器</a></li>
-                        <li><a href="https://register.ethscriptions.com" target="_blank" rel="noopener">域名注册</a></li>
-                        <li><a href="https://marketplace.ethscriptions.com" target="_blank" rel="noopener">域名市场</a></li>
+                <div class="pricing-card">
+                    <h3>单词</h3>
+                    <div class="price">$议价 <span class="price-period">永久</span></div>
+                    <ul class="pricing-features">
+                        <li>经济实惠</li>
+                        <li>完全所有权</li>
+                        <li>优先支持</li>
                     </ul>
+                    <button class="cta-button">X</button>
                 </div>
             </div>
         </div>
     </section>
+    
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">关于.OKB的常见问题</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>什么是.OKB域名？</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>.OKB是XLayer链上的首个域名后缀，作为去中心化身份解决方案，它可以替代复杂的区块链地址，让您用简单易记的.OKB域名接收加密货币付款、访问去中心化应用等。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>为什么.OKB比.ETH和.BTC更好？</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>.OKB提供了更低的注册费用(0.01USDT起)、永久免费的拥有权、完整的去中心化以及深度整合OKEX和XLayer生态的优势。相比之下，.ETH和.BTC域名通常需要更高的费用和定期续费。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>如何注册.OKB域名？</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>注册.OKB域名非常简单：1) 连接您的加密货币钱包 2) 搜索您想要的域名 3) 确认可用后支付极低的Gas费用 4) 完成注册并获得永久所有权。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>.OKB域名有哪些用途？</span>
+                    <i class="fas fa-chevron-down faq-toggle"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>.OKB域名可以用于：简化加密支付地址、作为去中心化身份、访问DApps、托管去中心化网站、NFT身份验证等多种Web3.0应用场景。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta-section">
+        <div class="container">
+            <div style="text-align: center; padding: 5rem 0; background: linear-gradient(135deg, var(--accent), var(--highlight)); border-radius: 15px;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem;">准备好拥有您的.OKB域名了吗？</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">立即注册您独一无二的.OKB域名，开启去中心化身份的新篇章。</p>
+                <button class="cta-button" style="background: white; color: var(--accent);">立即注册</button>
+            </div>
+        </div>
+    </section>
+    
     <footer>
         <div class="container">
-            <div class="footer-links"> <a href="#definition" class="footer-link">定义</a> <a href="#comparison" class="footer-link">对比</a> <a href="#technology" class="footer-link">技术</a> <a href="#use-cases" class="footer-link">用例</a> <a href="#resources" class="footer-link">资源</a> </div>
-            <p class="copyright">© 2025 Ethscriptions 铭文 .eth 域名社区. 保留所有权利.</p>
+            <div class="footer-logo">.OKB</div>
+            <p class="footer-text">XLayer链首个域名后缀，为您提供完全去中心化的数字身份解决方案。</p>
+            <div class="footer-links">
+                <span class="footer-link">关于我们</span>
+                <span class="footer-link">常见问题</span>
+                <span class="footer-link">开发者文档</span>
+                <span class="footer-link">联系我们</span>
+            </div>
+            <div class="footer-social">
+                <i class="fab fa-twitter social-icon"></i>
+                <i class="fab fa-telegram social-icon"></i>
+                <i class="fab fa-github social-icon"></i>
+                <i class="fab fa-discord social-icon"></i>
+            </div>
+            <div class="disclaimer">以上内容仅供参考</div>
         </div>
     </footer>
-    <div class="ai-disclaimer"> 以上内容由AI搜集并生成，仅供参考 </div>
+ 
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question  => {
+            question.addEventListener('click',  () => {
+                const item = question.parentNode; 
+                item.classList.toggle('active'); 
+            });
+        });
+        
+        // Simple animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry  => {
+                if (entry.isIntersecting)  {
+                    entry.target.style.opacity  = 1;
+                    entry.target.style.transform  = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.feature-card,  .pricing-card, .section-title').forEach(element => {
+            element.style.opacity  = 0;
+            element.style.transform  = 'translateY(20px)';
+            element.style.transition  = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(element); 
+        });
+    </script>
 </body>
-
-</html><!-- 以上内容由AI搜集并生成，仅供参考 -->
-
-以上内容均由AI搜集总结并生成，仅供参考
+</html>
